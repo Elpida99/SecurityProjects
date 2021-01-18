@@ -1,6 +1,5 @@
 """
 Program that stores the usernames and the password hashes from the user's input
-# https://nordpass.com/most-common-passwords-list/ --> source of common passwords
 """
 print(__doc__)
 
