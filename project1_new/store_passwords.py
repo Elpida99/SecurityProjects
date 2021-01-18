@@ -9,10 +9,6 @@ import random
 import string
 
 
-
-
-
-
 def main():
     """
     opens text file and appends new username and password
