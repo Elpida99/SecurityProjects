@@ -107,10 +107,10 @@ def check_certificate(hostname, all_data, current_date, trusted_CAs):
 def check_hostname(hostname):
     try:
         socket.gethostbyname(hostname)
-        return 0
+        return True
     except Exception as e:
         exc = e
-        return 1
+        return False
 
 
 def parse_url(url):
@@ -129,7 +129,7 @@ def main():
     else:
         hostname = parsed_url.netloc.strip('*')
     print(hostname)
-    if check_hostname(hostname):
+    if not check_hostname(hostname):
         print("hostname not found")
         return
 
