@@ -1,3 +1,13 @@
+"""
+User input: url or hostname, date or option for the current date
+The program verifies the ssl certificate by:
+    * checking if the hostname and the common name match
+    * checking if the CA is one of the trusted ones
+    * checking that the version is 3
+    * checking if the date given or the current date is within the valid range of the certificate[not_before, not_after]
+"""
+print(__doc__)
+
 import socket
 import ssl
 from datetime import datetime
@@ -6,6 +16,9 @@ import urllib.parse
 
 
 def connect(hostname):
+    """
+    connects with the host and returns the ssl certificate
+    """
     ctx = ssl.create_default_context()
 
     with ctx.wrap_socket(socket.socket(), server_hostname=hostname) as s:
@@ -17,11 +30,16 @@ def connect(hostname):
 
 
 def get_cert_info(cert):
-
+    """
+    returns the info needed from the ssl certificate
+    """
+    
+    # version
     version = cert['version']
 
+    #issuer
     issuer = cert['issuer']
-    issuer_dic = make_dic(issuer)
+    issuer_dic = make_dic(issuer) # make it a dictionary to return
     issuer_common_name = issuer_dic['commonName']
 
     subject = cert['subject']
