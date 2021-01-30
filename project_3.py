@@ -40,11 +40,11 @@ def get_cert_info(cert):
     #issuer
     issuer = cert['issuer']
     issuer_dic = make_dictionary(issuer) # make it a dictionary to return
-    issuer_common_name = issuer_dictionary['commonName']
+    issuer_common_name = issuer_dic['commonName']
 
     subject = cert['subject']
     subject_dic = make_dictionary(subject)
-    subject_common_name = subject_dictionary['commonName']
+    subject_common_name = subject_dic['commonName']
 
     not_after = convert_date(cert['notAfter'].split(" GMT")[0])
     not_before = convert_date(cert['notBefore'].split(" GMT")[0])
