@@ -54,7 +54,7 @@ def get_cert_info(cert):
     return all_data
 
 
-def make_dic(target):
+def make_dictionary(target):
 
     target_dic = {}
     for i in range(0, len(target)):
